@@ -107,7 +107,7 @@ def _load_guidance(cwd: Optional[str]) -> str:
     for label, path in _config_paths(cwd, GUIDANCE_BASENAME):
         try:
             with open(path, encoding="utf-8") as f:
-                txt = f.read().strip()
+                txt = f.read(GUIDANCE_MAX_BYTES).strip()
         except OSError:
             continue
         if txt:
